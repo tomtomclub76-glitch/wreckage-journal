@@ -251,7 +251,7 @@ const monthYear = new Date().toLocaleDateString("en-US",{month:"long",year:"nume
 const season = ["Winter","Spring","Summer","Fall"][Math.floor((new Date().getMonth()/12)*4)];
 
 async function callAI(system, user) {
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
+  const res = await fetch("/api/claude", {
     method:"POST",
     headers:{"Content-Type":"application/json"},
     body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1000, system, messages:[{role:"user",content:user}] })
