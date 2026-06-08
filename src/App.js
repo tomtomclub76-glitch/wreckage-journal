@@ -908,42 +908,8 @@ export default function App() {
     return null;
   };
 
-  if(!mode) return (
-    <>
-      <style>{css}</style>
-      <div className="selector">
-        <div>
-          <div className="sel-eyebrow">RECLAIM LLC</div>
-          <div className="sel-title">Choose Your<br/>Journal</div>
-          <div className="sel-tag">Chaos in, clarity out.</div>
-        </div>
-        <div className="sel-cards">
-          <div className="sel-card w" onClick={()=>{setMode("w");setActiveMode("w");setPage("daily");}}>
-            <div className="card-eyebrow">Life Journal</div>
-            <div className="card-name">The Wreckage Journal</div>
-            <div className="card-sub">Chaos in, clarity out.</div>
-            <div className="card-body">Raw, personal, whole-life. Built for the creative who needs structure without killing the chaos. Music, comedy, ideas, life — everything goes in.</div>
-            <div className="card-price">$12/mo &nbsp;·&nbsp; $99/yr</div>
-          </div>
-          <div className="sel-card r" onClick={()=>{setMode("r");setActiveMode("r");setPage("daily");}}>
-            <div className="card-eyebrow">Business Journal</div>
-            <div className="card-name">RECLAIM War Ledger</div>
-            <div className="card-sub">Build the thing. Track the war.</div>
-            <div className="card-body">Disciplined, sharp, execution-focused. Local digital properties, AI consulting, digital products, pipeline, money. The operator’s journal for multiple revenue streams.</div>
-            <div className="card-price">$19/mo &nbsp;·&nbsp; $149/yr</div>
-          </div>
-          <div className="sel-card b" onClick={()=>{setMode("b");setActiveMode("w");setPage("daily");}}>
-            <div className="best-value">★ best value</div>
-            <div className="card-eyebrow">Full System</div>
-            <div className="card-name">The Complete System</div>
-            <div className="card-sub">Both journals. One engine.</div>
-            <div className="card-body">The Wreckage Journal + The RECLAIM War Ledger in one app. Toggle between life and business. Built by an entrepreneur, for entrepreneurs.</div>
-            <div className="card-price">$24/mo &nbsp;·&nbsp; $189/yr &nbsp;·&nbsp; <span style={{color:"var(--text2)"}}>save $72/yr vs. both</span></div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+  // Auto-launch into Wreckage Journal
+  useEffect(()=>{ if(user && !mode){ setMode("w"); setActiveMode("w"); setPage("daily"); } },[user]);
 
   const tabs = wTabs;
 
